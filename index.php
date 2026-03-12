@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Mon site web</title>
+        <title>Tu préfères le soleil ou la lune</title>
         <link rel="stylesheet" type="text/css" href="style.css">
 
 
@@ -15,14 +15,14 @@
         $users = json_decode($content, true);
         $correct = "inconnu";
 
-        $name = $_GET["name"];
+        $nom = $_GET["nom"];
         $mdp = $_GET["mdp"];
-        if (isset($name) && $name != null && $mdp != null) {
+        if (isset($nom) && $nom != null && $mdp != null) {
             $correct = false;
             foreach ($users as $user) {
-                if ($user["email"] === $name && $user["mdp"] === $mdp) {
+                if (strtolower($user["email"]) === strtolower($nom) && $user["mdp"] === $mdp) {
                     //$_SESSION["user"] = $user;
-
+                    $id = $user["id"];
                     $correct = true;
                 }
             }
@@ -34,7 +34,7 @@
 
     <body >
         <div class="Titre">
-            <h1>GROS TITRE DE LA LUNE</h1>
+            <h1>LA GROSSE LUNE </h1>
         </div>
 
         <div class = "Deconnect" style =   "position: absolute; top: 25px; right: 10px;">
@@ -42,54 +42,46 @@
                 <button id="deconnect" type="button" onclick="deconnect()">Déconnexion</button>
             <?php endif; ?>
         </div>
-
-        
-        <div class = "Formulaire">
-            <?php 
-                if ($correct === true):
-                    echo "<p>Connexion réussie !</p>";
-                else:
-
+        <div class = "Principale">
+            <?php if ($correct === false || $correct === 'inconnu'): ?> 
+                    <?php
                     if ($correct === false):
                         echo "<p>Identifiants invalides.</p>";
                     endif;
                     ?>
 
                     <form method="get" action= "index.php">
-                    <label for="name">Nom :</label><br>
-                    <input type="text" id="name" name="name"><br>
-                    <label for="mdp">Mot de Passe :</label><br>
-                    <input type="password" id="mdp" name="mdp"><br>
+                        <label for="nom">Identifiant :</label><br>
+                        <input type="text" id="nom" name="nom"><br>
+                        <label for="mdp">Mot de Passe :</label><br>
+                        <input type="password" id="mdp" name="mdp"><br>
+                        <input type='submit' value='Se connecter'><br>
+                    </form>  
 
-                    <?php
-                    if ($correct === 'inconnu'): 
-                            echo "<input type='submit' value='Se connecter'>";
-                    endif; 
-                    ?>
-
-                    </form> <br> 
-                    <p> Ou bien </p>
-                    <br>
+                    <p> Ou bien </p><br>
+                    
                     <button id ="boutonform" type="button" onclick="demanderVoyage()">Demande de voyage</button>
 
                     <div id = "demandeVoyage" style="display:none;">
-                    <form method="post" action="index.php">
-                        <label for="mail">Adresse mail :</label><br>
-                        <input type="text" id="mail" name="mail"><br>
-                        <label for="dateDeb">Date de début :</label><br>
-                        <input type="date" id="dateDeb" name="dateDeb"><br>
-                        <label for="dateFin">Date de fin :</label><br>
-                        <input type="date" id="dateFin" name="dateFin"><br>
-                        <input type="submit" value="Demander">
-                    </form>
-                <?php endif; ?>
+                        <form method="post" action="index.php">
+                            <label for="mail">Adresse mail :</label><br>
+                            <input type="text" id="mail" name="mail"><br>
+                            <label for="dateDeb">Date de début :</label><br>
+                            <input type="date" id="dateDeb" name="dateDeb"><br>
+                            <label for="dateFin">Date de fin :</label><br>
+                            <input type="date" id="dateFin" name="dateFin"><br>
+                            <input type="submit" value="Demander">
+                        </form>
+                    </div>
+            <?php else: ?>
+            <?php
+                if ($id === 1 || $id === 2):
+                    echo "<p>Bienvenue Patron !</p>";
+                else:
+                    echo "<p>Bienvenue sur votre espace</p>";
+                endif;        
+            ?>
         </div>
-
-        </div>
-
-
-
-
-
+        <?php endif; ?>
     </body>
 </html>
