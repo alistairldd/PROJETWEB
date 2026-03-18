@@ -1,17 +1,17 @@
 [
     {
         "id": 1,
-        "email": "Marc",
+        "email": "marc@gogo.com",
         "mdp": "blo"
     },
     {
         "id": 2,
-        "email": "Alistair",
+        "email": "alistair@gogo.com",
         "mdp": "bli"
     },
     {
         "id": 3,
-        "email": "Frederic",
+        "email": "frederic@gogo.com",
         "mdp": "bla"
     }
 ]
