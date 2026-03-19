@@ -1,33 +1,21 @@
 
 
-<html>
+<html lang="fr">
     <head>
-        <title>Tu préfères le soleil ou la lune</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Tu préfères le soleil ou la lune</title>
 
 
-        <script src="script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
 
         <?php
 
-        $content = file_get_contents(__DIR__ . '/id.json');
-        $users = json_decode($content, true);
-        $admin = false;
 
-        $nom = $_POST["nom"];
-        $mdp = $_POST["mdp"];
-        if (isset($nom) && isset($mdp)) {
-            $correct = false;
-            foreach ($users as $user) {
-                if (strtolower($user["email"]) === strtolower($nom) && $user["mdp"] === $mdp) {
-                    //$_SESSION["user"] = $user;
-                    $id = $user["id"];
-                    $correct = true;
-                    if ($id === 1 || $id === 2) $admin = true;
-                }
-            }
-        }
+        $envoi = $_GET["envoi"] ?? null;
 
         ?>
 
@@ -44,13 +32,12 @@
             <?php endif; ?>
         </div>
         <div class = "Principale">
-            <?php if (($correct === false || $correct === NULL) && !isset($_GET["envoi"])): ?>
-                    <?php
-                    if ($correct === false):
+            <?php
+                    if ($envoi === "fail"):
                         echo "<p>Identifiants invalides.</p>";
                     endif;
                     ?>
-                    <form method="post" action= "index.php">
+                    <form method="post" action= "traitement.php">
                         <label for="nom">Identifiant :</label><br>
                         <input type="text" id="nom" name="nom" required><br>
                         <label for="mdp">Mot de Passe :</label><br>
@@ -69,43 +56,34 @@
                             <label for="mail">Adresse mail :</label><br>
                             <input type="email" id="mail" name="mail" required><br>
                             <label for="dateDeb">Date de début : </label>
-                            <input type="date" id="dateDeb" name="dateDeb" required><br>
+                            <input type="date" id="dateDeb" name="dateDeb" required> <br>
                             <label for="dateFin">Date de fin : </label>
-                            <input type="date" id="dateFin" name="dateFin" required><br>
+                            <input type="date" id="dateFin" name="dateFin" required><div id="msg-dispo"></div><br>
                             <label for="nbPersonnes">Nombre de personnes : </label>
                             <input type="number" id="nbPersonnes" name="nbPersonnes" min="1" max="10" required><br>
-                            <label for="activites">Activités souhaitées : </label>
-                            <select id="activites" name="activites">
+                             <!-- <label for="activites">Activités souhaitées : </label>
+                             <select id="activites" name="activites">
                                 <option value="rien">Aucune</option>
                                 <option value="tennis">Tennis</option>
                                 <option value="badminton">Badminton</option>
                                 <option value="natation">Natation</option>
                                 <option value="seh">Saut en hauteur</option>
-                            </select><br>
+                            </select><br> -->
 
                             <input type="submit" value="Demander">
                         </form>
                     </div>
-            <?php else:
-
-                if ($admin === true):
-                    echo "<p>Bienvenue Patron !</p>";
-                else:
-                    echo "<p>Bienvenue sur votre espace</p>";
-                endif;
-
-                if (isset($_GET["envoi"]) && $_GET["envoi"] === "success") {
-                    echo "<p>🚀 Vol vers la Lune enregistré ! <br> <br>
+            <?php 
+                if ($envoi === "success") :
+                    echo "<p>Vol vers la Lune enregistré ! <br> <br>
 
                             Votre demande a bien été transmise à nos administrateurs. <br>
                             Un email vous sera envoyé prochainement avec vos accès (url, nom, mot de passe) dès qu'on aura validé votre séjour. <br> <br>
 
                             Délai de réponse moyen : 24h terrestres. <br> </p>";
-                } // Demander au prof si c'est mieux d'avoir plusieurs pages php pour chaque truc (genre traitement du mdp et tout avec redirection directe), ou 
-                // tout faire dans la même page et faire du if pour afficher les trucs en fonction de ce qui a été envoyé ou pas
-                // ou faire un switch case avec des includes 
+                
+                endif;
             ?>
         </div>
-        <?php endif; ?>
     </body>
 </html>
