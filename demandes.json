@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "email": "lala@lili.com",
+        "dateDeb": "2026-03-19",
+        "dateFin": "2026-03-20",
+        "nbPersonnes": "2",
+        "traite": false
+    },
+    {
+        "id": 2,
+        "email": "lalo@lili.com",
+        "dateDeb": "2026-03-19",
+        "dateFin": "2026-03-20",
+        "nbPersonnes": "2",
+        "traite": false
+    }
+]

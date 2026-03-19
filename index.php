@@ -33,6 +33,15 @@
         </div>
         <div class = "Principale">
             <?php
+                if ($envoi === "success") {
+                    echo "<p>Vol vers la Lune enregistré ! <br> <br>
+
+                            Votre demande a bien été transmise à nos administrateurs. <br>
+                            Un email vous sera envoyé prochainement avec vos accès (url, nom, mot de passe) dès qu'on aura validé votre séjour. <br> <br>
+
+                            Délai de réponse moyen : 24h terrestres. <br> </p>";
+
+                } else {
                     if ($envoi === "fail"):
                         echo "<p>Identifiants invalides.</p>";
                     endif;
@@ -72,17 +81,10 @@
 
                             <input type="submit" value="Demander">
                         </form>
+                        <?php } ?>
                     </div>
             <?php 
-                if ($envoi === "success") :
-                    echo "<p>Vol vers la Lune enregistré ! <br> <br>
 
-                            Votre demande a bien été transmise à nos administrateurs. <br>
-                            Un email vous sera envoyé prochainement avec vos accès (url, nom, mot de passe) dès qu'on aura validé votre séjour. <br> <br>
-
-                            Délai de réponse moyen : 24h terrestres. <br> </p>";
-                
-                endif;
             ?>
         </div>
     </body>

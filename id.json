@@ -3,32 +3,17 @@
         "id": 1,
         "email": "marc@gogo.com",
         "mdp": "blo",
-        "admin": "true"
+        "admin": true
     },
     {
         "id": 2,
         "email": "alistair@gogo.com",
         "mdp": "bli",
-        "admin": "true"
+        "admin": true
     },
     {
         "id": 3,
         "email": "frederic@gogo.com",
         "mdp": "bla"
-    },
-    {
-        "id": 4,
-        "email": "toto@gou",
-        "mdp": "yJhVnAHF"
-    },
-    {
-        "id": 5,
-        "email": "toto1@gou",
-        "mdp": "Kz7y3hzi",
-        "reservations":[],
-        "activites":[
-            {"nomact":"tennis", "validee":false, "partenaire":null},
-            {"nomact":"sautelastiquefaiblepesanteur", "validee":false, "partenaire":null}
-        ]
     }
 ]
