@@ -12,12 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="script.js"></script>
 
-        <?php
-
-
-        $envoi = $_GET["envoi"] ?? null;
-
-        ?>
+        <?php $envoi = $_GET["envoi"] ?? null; ?>
 
     </head>
 
@@ -31,6 +26,7 @@
                 <button id="deconnect" type="button" onclick="deconnect()">Déconnexion</button>
             <?php endif; ?>
         </div>
+
         <div class = "Principale">
             <?php
                 if ($envoi === "success") {
@@ -46,19 +42,22 @@
                         echo "<p>Identifiants invalides.</p>";
                     endif;
                     ?>
-                    <form method="post" action= "traitement.php">
-                        <label for="nom">Identifiant :</label><br>
-                        <input type="text" id="nom" name="nom" required><br>
-                        <label for="mdp">Mot de Passe :</label><br>
-                        <input type="password" id="mdp" name="mdp" required><br>
-                        <input type='submit' value='Se connecter'><br>
-                    </form>  
 
-                    <p> Ou bien </p><br>
+                    <button id="boutonConnexion" type="button" onclick="afficherConnexion()">Se connecter</button>
+
+                    <div id="formConnexion" style="display:none;">
+                        <form method="post" action="traitement.php">
+                            <label for="nom">Identifiant :</label><br>
+                            <input type="text" id="nom" name="nom" required><br>
+                            <label for="mdp">Mot de Passe :</label><br>
+                            <input type="password" id="mdp" name="mdp" required><br>
+                            <input type='submit' value='Valider la connexion'><br>
+                        </form>
+                    </div>  
                     
                     <button id ="boutonform" type="button" onclick="demanderVoyage()">Demande de voyage</button>
 
-                    <div id = "demandeVoyage" style="display:none;">
+                    <div id = "demandeVoyage">
 
                         <form method="post" action="traitement.php">
 

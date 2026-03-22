@@ -30,7 +30,7 @@ if (isset($mail) && isset($dateDeb) && isset($dateFin) && isset($nbPersonnes)) {
 
     file_put_contents(__DIR__ . '/demandes.json', json_encode($demandes, JSON_PRETTY_PRINT));
 
-    header('Location: index.php?envoi=success');
+    header('Location: index.php?envoi=success');exit();
 } else if (isset($nom) && isset($mdp)) {
     $ids = json_decode(file_get_contents(__DIR__ . '/id.json'), true);
     error_log("Nom : $nom" . " | Mot de passe : $mdp");
@@ -39,8 +39,8 @@ if (isset($mail) && isset($dateDeb) && isset($dateFin) && isset($nbPersonnes)) {
         if (strtolower($id["email"]) === strtolower($nom) && $id["mdp"] === $mdp) {
             $correct = true;
             $_SESSION["user"] = $id;
-            if (isset($id["admin"]) && $id["admin"]) {header('Location: admin.php'); break;}
-            else header('Location: client.php'); break;
+            if (isset($id["admin"]) && $id["admin"]) {header('Location: admin.php'); exit();}
+            else header('Location: client.php'); exit();
         }
     }
     if ($correct === false) header('Location: index.php?envoi=fail');

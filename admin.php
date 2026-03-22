@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== "true") {
+if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== true) {
     header('Location: index.php');
     exit();
 }
@@ -17,8 +17,26 @@ if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== "true") {
     <link rel="stylesheet" href="style.css">
     <title>Admin - Gestion des demandes</title>
     <script src="script.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+
+    <div class="Titre">
+        <h1>LA GROSSE LUNE </h1>
+    </div>
+
+     <div class = "Deconnect" style =   "position: absolute; top: 25px; right: 10px;">
+            
+        <button id="deconnect" type="button" onclick="deconnect()">Déconnexion</button>
+            
+    </div>
+
+    <div class = "Principale">
+
+   
+
     <?php
         echo "<p>Bienvenue Patron !</p><br>";
 
@@ -38,5 +56,7 @@ if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== "true") {
             };
         }
     ?>
+
+    </div>
 </body>
 </html>

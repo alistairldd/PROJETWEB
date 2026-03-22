@@ -11,7 +11,12 @@ function deconnect() {
     window.location.href = "index.php";
 }
 
-$('#dateDeb, #dateFin').on('change', function() {
+function seConnecter() {
+    $('#formConnexion').show();
+    $('#demandeVoyage').hide();
+}
+
+$('#dateDeb, #dateFin').on('change', function () {
     var dateDeb = $('#dateDeb').val();
     var dateFin = $('#dateFin').val();
 
@@ -24,39 +29,39 @@ $('#dateDeb, #dateFin').on('change', function() {
                 dateFin: dateFin
             },
         })
-        .done(function(response) {
-            var resp = $.trim(response);
-            if (resp === 'disponible') {
+            .done(function (response) {
+                var resp = $.trim(response);
+                if (resp === 'disponible') {
 
-                $('#msg-dispo').html("<span style='color: green;'>Les dates sont disponibles.</span>");
-            } else {
-                $('#msg-dispo').html("<span style='color: red;'>Les dates ne sont pas disponibles.</span>");
-            }
-        })
-        .fail(function() {
-            $('#msg-dispo').html("<span style='color: red;'>Erreur lors de la vérification des dates.</span>");
-        });
+                    $('#msg-dispo').html("<span style='color: green;'>Les dates sont disponibles.</span>");
+                } else {
+                    $('#msg-dispo').html("<span style='color: red;'>Les dates ne sont pas disponibles.</span>");
+                }
+            })
+            .fail(function () {
+                $('#msg-dispo').html("<span style='color: red;'>Erreur lors de la vérification des dates.</span>");
+            });
     } else {
         $('#msg-dispo').empty();
     }
 });
 
 
-function accepterVoyage(idDemande, emailUser){
+function accepterVoyage(idDemande, emailUser) {
     console.log(idDemande);
     $.ajax({
-        url:'valider_demande.php',
+        url: 'valider_demande.php',
         method: 'POST',
         data: {
             id: idDemande,
             mail: emailUser
         },
-        success: function(reponse){
+        success: function (reponse) {
             alert("Un voyage a été accepté pour " + emailUser + " !");
             $('#demande-' + idDemande).remove();
         },
 
-        error: function(){
+        error: function () {
             alert("Une erreur est survenue lors de l'acceptation du voyage pour " + emailUser + ".");
         }
     })
