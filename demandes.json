@@ -5,7 +5,7 @@
         "dateDeb": "2026-03-19",
         "dateFin": "2026-03-20",
         "nbPersonnes": "2",
-        "traite": false
+        "traite": true
     },
     {
         "id": 2,

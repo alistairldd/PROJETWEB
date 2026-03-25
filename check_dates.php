@@ -7,3 +7,4 @@ if ($dateDeb < $dateFin) {
 } else {
     echo "indisponible";
 }
+?>

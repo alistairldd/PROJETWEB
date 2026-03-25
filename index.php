@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <html lang="fr">
     <head>
@@ -38,27 +38,31 @@
                             Délai de réponse moyen : 24h terrestres. <br> </p>";
 
                 } else {
-                    if ($envoi === "fail"):
-                        echo "<p>Identifiants invalides.</p>";
-                    endif;
                     ?>
 
-                    <button id="boutonConnexion" type="button" onclick="afficherConnexion()">Se connecter</button>
+                    <button id="boutonConnexion" type="button" onclick="seConnecter()">Se connecter</button>
 
+                    
+                    
                     <div id="formConnexion" style="display:none;">
-                        <form method="post" action="traitement.php">
+                        <p> Veuillez entrer vos identifiants pour vous connecter. </p>
+
+                        <div id="messageErreur"></div> </form>
+
+                        <form id="formuConnexion" method="post" action="traitement.php">
                             <label for="nom">Identifiant :</label><br>
-                            <input type="text" id="nom" name="nom" required><br>
+                            <input type="email" id="nom" name="nom" required><br>
                             <label for="mdp">Mot de Passe :</label><br>
                             <input type="password" id="mdp" name="mdp" required><br>
-                            <input type='submit' value='Valider la connexion'><br>
+                            <input type='submit' id="validerConnexion" value='Valider la connexion'><br>
                         </form>
+                        <p> Pas encore de compte ? <br> Faites votre demande de voyage pour en créer un ! </p>
                     </div>  
                     
-                    <button id ="boutonform" type="button" onclick="demanderVoyage()">Demande de voyage</button>
+                    <button id ="boutonform" type="button" style="display:none;" onclick="demanderVoyage()">Demande de voyage</button>
 
                     <div id = "demandeVoyage">
-
+                        <p> Bienvenue sur le site de la Grosse Lune ! <br> Completez le formulaire si dessous pour faire votre demande de voyage. </p>
                         <form method="post" action="traitement.php">
 
                             <label for="mail">Adresse mail :</label><br>
