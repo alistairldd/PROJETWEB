@@ -25,7 +25,24 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     min-height: 80vh;
     padding-top: 20px;
-    gap : 20px;
+    font-size: 28px;
+    text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+}
+
+.PrincipaleAdmin {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    align-items: center;
+
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 80vh;
+    padding-top: 20px;
 }
 
 
@@ -34,6 +51,7 @@ body {
     top: 20px;          
     right: 20px;        
     padding: 10px 15px;
+    font-size: 16px;
 
 }
 
@@ -51,6 +69,60 @@ body {
     border-radius: 5px;
     margin-top: 10px;
     font-weight: bold;
+}
+
+#msg-dispo{
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.dispo-ok {
+    background-color: #ccffcc;
+    color: #006600;
+    border: 1px solid #006600;
+}
+
+.dispo-no {
+    background-color: #ffcccc;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+}
+
+.input {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#demandeVoyage {
+    text-align: left;
+}
+
+#demander {
+    display: block;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 20px auto;
+    width: 80%;
+    font-size: 16px;
+    cursor: pointer;
+}
+.demander-no {
+    background-color: #cc0000;
+}
+
+
+#demander-ok:hover {
+    background-color: #45a049;
 }
 
 #demandes {

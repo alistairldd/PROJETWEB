@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "nom" : " Suite Horizon ",
+        "nbPlaces": "5",
+        "occupation" : [
+            { "debut": "2026-03-19", "fin": "2026-03-20", "iddemande": 3 } 
+        ],
+        "old_occupation" : [ 
+            { "debut": "2026-03-05", "fin": "2026-03-15", "iddemande": 1, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 2,
+        "nom" : " Suite Arianne",
+        "nbPlaces": "2",
+        "occupation" : [ 
+            { "debut": "2026-03-19", "fin": "2026-03-20", "iddemande": 2 }
+        ],
+        "old_occupation" : [ 
+            { "debut": "2026-03-10", "fin": "2026-03-12", "iddemande": 1, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 3,
+        "nom": " Suite Selene",
+        "nbPlaces": "3",
+        "occupation": [
+            { "debut": "2026-03-27", "fin": "2026-03-29", "iddemande": 3 },
+            { "debut": "2026-04-05", "fin": "2026-04-07", "iddemande": 4 }
+        ],
+        "old_occupation" : [
+            { "debut": "2026-03-25", "fin": "2026-03-26", "iddemande": 2, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 4,
+        "nom": " Suite Artemis",
+        "nbPlaces": "4",
+        "occupation": [
+            { "debut": "2026-03-30", "fin": "2026-04-02", "iddemande": 3 }
+        ],
+        "old_occupation" : [
+            { "debut": "2026-03-28", "fin": "2026-03-29", "iddemande": 2, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 5,
+        "nom": " Suite Cynthia",
+        "nbPlaces": "2",
+        "occupation": [
+            { "debut": "2026-04-01", "fin": "2026-04-03", "iddemande": 5 },
+            { "debut": "2026-04-10", "fin": "2026-04-12", "iddemande": 6 }
+        ],
+        "old_occupation" : [
+            { "debut": "2026-03-01", "fin": "2026-03-03", "iddemande": 5, "raison":"Expiré" },
+            { "debut": "2026-03-10", "fin": "2026-03-12", "iddemande": 6, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 6,
+        "nom": " Suite Endymion",
+        "nbPlaces": "5",
+        "occupation": [
+            { "debut": "2026-04-06", "fin": "2026-04-08", "iddemande": 7 }
+        ],
+        "old_occupation" : [
+            { "debut": "2026-03-06", "fin": "2026-03-08", "iddemande": 7, "raison": "Expiré" }
+        ]
+    },
+    {
+        "id": 7,
+        "nom": " Suite Lunaria",
+        "nbPlaces": "3",
+        "occupation": [
+            { "debut": "2026-04-09", "fin": "2026-04-11", "iddemande": 8 }
+        ],
+        "old_occupation" : [
+            { "debut": "2026-03-09", "fin": "2026-03-11", "iddemande": 8, "raison": "Expiré" }
+        ]
+    }
+]

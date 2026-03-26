@@ -33,7 +33,7 @@ if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== true) {
             
     </div>
 
-    <div class = "Principale">
+    <div class = "PrincipaleAdmin">
 
    
 

@@ -3,7 +3,6 @@ function demanderVoyage() {
     $(`#boutonform`).hide();
     $('#formConnexion').hide();
     $('#boutonConnexion').show();
-
 }
 
 
@@ -17,7 +16,7 @@ function deconnect() {
 function seConnecter() {
     $('#formConnexion').show();
     $('#demandeVoyage').hide();
-    $(`#boutonform`).show();
+    $('#boutonform').show();
     $('#boutonConnexion').hide();
 }
 $(document).ready(function() {
@@ -26,30 +25,24 @@ $(document).ready(function() {
         var dateDeb = $('#dateDeb').val();
         var dateFin = $('#dateFin').val();
 
-        if (dateDeb !== '' && dateFin !== '') {
-            $.ajax({
-                url: 'check_dates.php',
-                method: 'POST',
-                data: {
-                    dateDeb: dateDeb,
-                    dateFin: dateFin
-                },
-            })
-                .done(function (response) {
-                    var resp = $.trim(response);
-                    if (resp === 'disponible') {
+        $.ajax({
+            url: 'check_dates.php',
+            method: 'POST',
+            data: {
+                dateDeb: dateDeb,
+                dateFin: dateFin
+            },
+            dataType: 'json'
+        })
+            .done(function (response) {
+                $('#msg-dispo').removeClass('dispo-ok dispo-no');
+                if (response.disponible){
+                    $('#msg-dispo').text(response.message).addClass('dispo-ok').fadeIn();
+                } else { 
+                    $('#msg-dispo').text(response.message).addClass('dispo-no').fadeIn();
+                }
+            });
 
-                        $('#msg-dispo').html("<span style='color: green;'>Les dates sont disponibles.</span>");
-                    } else {
-                        $('#msg-dispo').html("<span style='color: red;'>Les dates ne sont pas disponibles.</span>");
-                    }
-                })
-                .fail(function () {
-                    $('#msg-dispo').html("<span style='color: red;'>Erreur lors de la vérification des dates.</span>");
-                });
-        } else {
-            $('#msg-dispo').empty();
-        }
     });
 
     /* Ajax pour la connexion */
@@ -79,7 +72,26 @@ $(document).ready(function() {
     });
 
 
+    /* pour le formulaire de demande de Voyage */
+    $('#mail, #dateDeb, #dateFin, #nbPersonnes').on('change', function () {
+        var donnees = {
+            mail: $('#mail').val(),
+            dateDeb: $('#dateDeb').val(),
+            dateFin: $('#dateFin').val(),
+            nbPersonnes: $('#nbPersonnes').val()
+        };
+
+        if (donnees.mail && donnees.dateDeb && donnees.dateFin && donnees.nbPersonnes) {
+            $('#demander').addClass('demander-ok');
+            $('#demander').removeClass('demander-no');
+        } else {
+            $('#demander').addClass('demander-no');
+            $('#demander').removeClass('demander-ok');
+        }
+    });
+
 });
+
 
 
 function accepterVoyage(idDemande, emailUser) {

@@ -47,10 +47,10 @@
                     <div id="formConnexion" style="display:none;">
                         <p> Veuillez entrer vos identifiants pour vous connecter. </p>
 
-                        <div id="messageErreur"></div> </form>
+                        <div id="messageErreur"></div>
 
                         <form id="formuConnexion" method="post" action="traitement.php">
-                            <label for="nom">Identifiant :</label><br>
+                            <label for="nom">Identifiant :</label><br> 
                             <input type="email" id="nom" name="nom" required><br>
                             <label for="mdp">Mot de Passe :</label><br>
                             <input type="password" id="mdp" name="mdp" required><br>
@@ -65,14 +65,15 @@
                         <p> Bienvenue sur le site de la Grosse Lune ! <br> Completez le formulaire si dessous pour faire votre demande de voyage. </p>
                         <form method="post" action="traitement.php">
 
-                            <label for="mail">Adresse mail :</label><br>
-                            <input type="email" id="mail" name="mail" required><br>
+                            <label for="mail">Adresse mail :</label>
+                            <input type="email" id="mail" name="mail" required class="input"><br>
                             <label for="dateDeb">Date de début : </label>
-                            <input type="date" id="dateDeb" name="dateDeb" required> <br>
+                            <input type="date" id="dateDeb" name="dateDeb" required class="input"> <br>
                             <label for="dateFin">Date de fin : </label>
-                            <input type="date" id="dateFin" name="dateFin" required><div id="msg-dispo"></div><br>
+                            <input type="date" id="dateFin" name="dateFin" required class="input">
+                            <div id="msg-dispo"></div><br>
                             <label for="nbPersonnes">Nombre de personnes : </label>
-                            <input type="number" id="nbPersonnes" name="nbPersonnes" min="1" max="10" required><br>
+                            <input type="number" id="nbPersonnes" name="nbPersonnes" min="1" max="10" required class="input"><br>
                              <!-- <label for="activites">Activités souhaitées : </label>
                              <select id="activites" name="activites">
                                 <option value="rien">Aucune</option>
@@ -82,7 +83,7 @@
                                 <option value="seh">Saut en hauteur</option>
                             </select><br> -->
 
-                            <input type="submit" value="Demander">
+                            <input type="submit" value="Demander" id="demander" class="demander-no">
                         </form>
                         <?php } ?>
                     </div>
