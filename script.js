@@ -2,6 +2,8 @@ function demanderVoyage() {
     $(`#demandeVoyage`).show();
     $(`#boutonform`).hide();
     $('#formConnexion').hide();
+    $('#boutonConnexion').show();
+
 }
 
 
@@ -16,6 +18,7 @@ function seConnecter() {
     $('#formConnexion').show();
     $('#demandeVoyage').hide();
     $(`#boutonform`).show();
+    $('#boutonConnexion').hide();
 }
 $(document).ready(function() {
     /* Ajax pour la vérification des dates */
@@ -89,12 +92,42 @@ function accepterVoyage(idDemande, emailUser) {
             mail: emailUser
         },
         success: function (reponse) {
-            alert("Un voyage a été accepté pour " + emailUser + " !");
-            $('#demande-' + idDemande).remove();
+            $('#accepter-' + idDemande).hide();
+            $('#refuser-' + idDemande).hide();
+            $('#retourT-' + idDemande).fadeIn();
+
+            var message = "Bienvenue : " + emailUser + "! <br>Votre demande pour un voyage sur la lune a été acceptée.<br> Vous pouvez dès à présent choisir vos activités!";
+
+            $('#demandes').css('position', 'absolute');
+            $('#demandes').css('top', '25%');
+            $('#demandes').css('left', '15%');
+            $('#messageEnvoi').html(message).show();
         },
 
         error: function () {
             alert("Une erreur est survenue lors de l'acceptation du voyage pour " + emailUser + ".");
+        }
+    })
+}
+
+function refuserVoyage(idDemande, emailUser){
+    console.log(idDemande);
+    $.ajax({
+        url: 'refuser_demande.php',
+        method: 'POST',
+        data: {
+            id: idDemande,
+            mail: emailUser
+        },
+        success: function (reponse) {
+            $('#accepter-' + idDemande).hide();
+            $('#refuser-' + idDemande).hide();
+            $('#retourF-' + idDemande).fadeIn();
+
+        },
+
+        error: function () {
+            alert("Une erreur est survenue lors du refus du voyage pour " + emailUser + ".");
         }
     })
 }
