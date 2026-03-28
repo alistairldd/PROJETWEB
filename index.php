@@ -51,9 +51,9 @@
 
                         <form id="formuConnexion" method="post" action="traitement.php">
                             <label for="nom">Identifiant :</label><br> 
-                            <input type="email" id="nom" name="nom" required><br>
+                            <input type="email" id="nom" name="nom" required class = "input"><br>
                             <label for="mdp">Mot de Passe :</label><br>
-                            <input type="password" id="mdp" name="mdp" required><br>
+                            <input type="password" id="mdp" name="mdp" required class = "input"><br>
                             <input type='submit' id="validerConnexion" value='Valider la connexion'><br>
                         </form>
                         <p> Pas encore de compte ? <br> Faites votre demande de voyage pour en créer un ! </p>

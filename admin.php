@@ -40,16 +40,30 @@ if (!isset($_SESSION["user"]) || $_SESSION["user"]["admin"] !== true) {
     <?php
         echo "<p>Bienvenue Patron !</p><br>";
 
-        echo "<h3> Demandes en attente : </h3><br>";
-
-        $demandes = json_decode(file_get_contents(__DIR__ . '/demandes.json'), true) ?? [];
-        $texte = "";
+        
 
         
         echo "
-        <div id = 'divDemande'>
-        <div id = 'demandes'>";
+        <button id='afficherDemande' onclick='afficherDemande()' style = 'position:absolute; left:25%; top:10%;'>Afficher les demandes</button>
+        <button id='cacherDemande' onclick='cacherDemande()' style='display:none;position:absolute; left:25%; top:10%'>Cacher les demandes</button>
+
+        <button id='afficherVoyage' onclick='afficherVoyage()' style = 'position:absolute; left:46.5%; top:10%;'>Afficher les voyages</button>
+        <button id='cacherVoyage' onclick='cacherVoyage()' style='display:none;position:absolute; left:46.5%; top:10%'>Cacher les voyages</button>
+
+        <button id='afficherChambreLibre' onclick='afficherChambreLibre()' style = 'position:absolute; right:25%; top:10%;'>Afficher les chambres libres</button>
+        <button id='cacherChambreLibre' onclick='cacherChambreLibre()' style='display:none;position:absolute; right:25%; top:10%'>Cacher les chambres libres</button>
         
+        <br> <br>
+        ";
+
+        $demandes = json_decode(file_get_contents("demandes.json"), true);
+        $texte = "";
+
+        echo "
+        <div id = 'divDemande' style = 'display:none'>
+
+        <div id = 'demandes'>
+        <p> Demandes en attente : </p> ";
         foreach ($demandes as $demande){
             $traite = $demande['traite'];
             if (!$traite){

@@ -19,7 +19,7 @@ function seConnecter() {
     $('#boutonform').show();
     $('#boutonConnexion').hide();
 }
-$(document).ready(function() {
+$(document).ready(function () {
     /* Ajax pour la vérification des dates */
     $('#dateDeb, #dateFin').on('change', function () {
         var dateDeb = $('#dateDeb').val();
@@ -36,9 +36,9 @@ $(document).ready(function() {
         })
             .done(function (response) {
                 $('#msg-dispo').removeClass('dispo-ok dispo-no');
-                if (response.disponible){
+                if (response.disponible) {
                     $('#msg-dispo').text(response.message).addClass('dispo-ok').fadeIn();
-                } else { 
+                } else {
                     $('#msg-dispo').text(response.message).addClass('dispo-no').fadeIn();
                 }
             });
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     /* Ajax pour la connexion */
 
-    $('#formuConnexion').on('submit', function(e) {
+    $('#formuConnexion').on('submit', function (e) {
         e.preventDefault();
         var donnees = {
             nom: $('#nom').val(),
@@ -60,15 +60,15 @@ $(document).ready(function() {
             data: donnees,
             dataType: 'json'
         })
-        .done(function(reponse) {
-            if (reponse.success) {
-                if (reponse.admin)  window.location.href = 'admin.php';
-                else window.location.href = 'client.php'; 
-            } else {
-                $('#messageErreur').text(reponse.message);
-                $('#messageErreur').fadeIn();
-            }
-        });
+            .done(function (reponse) {
+                if (reponse.success) {
+                    if (reponse.admin) window.location.href = 'admin.php';
+                    else window.location.href = 'client.php';
+                } else {
+                    $('#messageErreur').text(reponse.message);
+                    $('#messageErreur').fadeIn();
+                }
+            });
     });
 
 
@@ -122,7 +122,7 @@ function accepterVoyage(idDemande, emailUser) {
     })
 }
 
-function refuserVoyage(idDemande, emailUser){
+function refuserVoyage(idDemande, emailUser) {
     console.log(idDemande);
     $.ajax({
         url: 'refuser_demande.php',
@@ -142,4 +142,66 @@ function refuserVoyage(idDemande, emailUser){
             alert("Une erreur est survenue lors du refus du voyage pour " + emailUser + ".");
         }
     })
+}
+
+function afficherDemande() {
+    $('#divDemande').show();
+    $('#cacherDemande').show();
+    $('#afficherDemande').hide();
+
+    $('#cacherVoyage').hide();
+    $('#afficherVoyage').show();
+    $('#divVoyage').hide();
+
+    $('#cacherChambreLibre').hide();
+    $('#afficherChambreLibre').show();
+    $('#divChambresLibre').hide();
+}
+
+function cacherDemande() {
+    $('#divDemande').hide();
+    $('#afficherDemande').show();
+    $('#cacherDemande').hide();
+
+}
+
+function afficherVoyage() {
+    $('#divVoyage').show();
+    $('#cacherVoyage').show();
+    $('#afficherVoyage').hide();
+
+
+    $('#divDemande').hide();
+    $('#cacherDemande').hide();
+    $('#afficherDemande').show();
+
+    $('#cacherChambreLibre').hide();
+    $('#afficherChambreLibre').show();
+    $('#divChambresLibre').hide();
+}
+
+function cacherVoyage() {
+    $('#divVoyage').hide();
+    $('#afficherVoyage').show();
+    $('#cacherVoyage').hide();
+}
+
+function afficherChambreLibre() {
+    $('#divChambresLibre').show();
+    $('#cacherChambreLibre').show();
+    $('#afficherChambreLibre').hide();
+
+    $('#cacherDemande').hide();
+    $('#afficherDemande').show();
+    $('#divDemande').hide();
+
+    $('#cacherVoyage').hide();
+    $('#afficherVoyage').show();
+    $('#divVoyage').hide();
+}
+
+function cacherChambreLibre() {
+    $('#divChambreLibre').hide();
+    $('#afficherChambreLibre').show();
+    $('#cacherChambreLibre').hide();
 }
